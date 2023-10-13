@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Подробная информация о задаче{% endblock %}
+
+{% block body %}
+<div style="background-color: MediumPurple; border: 1px solid #ddd; padding: 20px; margin: 0 auto; border-radius: 5px; max-width: 40%;">
+    <h1 style="font-size: 20px; color: #191970;"><strong>Подробная информация о задаче : {{ task.title }}</strong></h1>
+    <div style="margin-top: 10px; font-size: 18px; color: Indigo;">
+        <strong>Описание:</strong> {{ task.description }}
+    </div>
+    <div style="margin-top: 10px; font-size: 16px; color: Indigo;">
+        <strong>Срок выполнения:</strong> {{ task.date ? task.date|date('Y-m-d') : 'Нет срока' }}
+    </div>
+    <div style="margin-top: 10px; font-size: 16px; color: Indigo;">
+        <strong>Категория:</strong> {{ task.category.name }}
+    </div>
+    
+    <div style="margin-top: 20px;">
+        <a href="{{ path('task_update', {'id': task.id}) }}" class="btn btn-warning">Редактировать</a>
+         <a href="{{ path('task_delete', {'id': task.id}) }}" class="delete-button" data-task-id="{{ task.id }}">Удалить</a>
+    </div>
+</div>
+
+
+
+<script>
+
+   const deleteButtons = document.querySelectorAll(".delete-button");
+   deleteButtons.forEach((button) => {
+       button.addEventListener("click", (event) => {
+           event.preventDefault();
+           const taskId = button.getAttribute("data-task-id");
+         
+           window.location.href = `/task/delete/${taskId}`;
+       });
+   });
+</script>
+
+
+{% endblock %}

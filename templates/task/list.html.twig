@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+{% endblock %}
+
+{% block body %}
+   <h1>Просмотр списка задач</h1>
+   <div class="task-container">
+       <ul class="task-list">
+           {% for task in pagination %}
+               <li class="task-item">
+                   ID Задачи - {{ task.id }} | Название - {{ task.title }} | Категория - {{ task.description }} | Срок: {{ task.Date|date('Y-m-d') }}
+                   | <a href="{{ path('app_task_view', {'id': task.id}) }}">Просмотр записи</a>
+               </li>
+           {% endfor %}
+       </ul>
+   </div>
+   {{ knp_pagination_render(pagination) }}
+</body>
+
+{% endblock %}
