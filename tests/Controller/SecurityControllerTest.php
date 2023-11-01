@@ -1,5 +1,5 @@
 <?php
-// tests/Controller/SecurityControllerTest.php
+
 namespace App\Tests\Controller;
 
 use App\Controller\SecurityController;
@@ -17,13 +17,8 @@ class SecurityControllerTest extends KernelTestCase
         $kernel = self::bootKernel();
         $container = $kernel->getContainer();
 
-        // Mock the AuthenticationUtils service
         $this->authenticationUtils = $this->createMock(AuthenticationUtils::class);
 
-        // Set up any necessary behavior on the mock, if needed
-        // For example, $this->authenticationUtils->method('getLastAuthenticationError')->willReturn(...);
-
-        // Create an instance of SecurityController with the mocked services
         $this->securityController = new SecurityController($this->authenticationUtils);
     }
 
@@ -31,7 +26,7 @@ class SecurityControllerTest extends KernelTestCase
 
     public function testLogout()
     {
-        // Call the logout method
+
         $this->expectException(\LogicException::class);
         $this->expectExceptionMessage('This method can be blank - it will be intercepted by the logout key on your firewall.');
         $this->securityController->logout();
