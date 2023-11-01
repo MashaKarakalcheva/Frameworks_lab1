@@ -79,7 +79,7 @@ class TaskType extends AbstractType
             ->add('Submit', SubmitType::class, [
                 'label'=>"Submit",
                 'attr' => [
-                    'class' => 'submit-button', // Добавьте класс для кнопки
+                    'class' => 'submit-button', 
                 ]
             ])
 
