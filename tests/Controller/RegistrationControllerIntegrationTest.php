@@ -18,8 +18,8 @@ class RegistrationControllerIntegrationTest extends WebTestCase
 
         
         $this->assertSelectorExists('form[name="registration_form"]');
-        $this->assertSelectorExists('input[name="registration_form[plainPassword]"]'); // Updated selector
+        $this->assertSelectorExists('input[name="registration_form[plainPassword]"]'); 
 
-
+        
     }
 }
